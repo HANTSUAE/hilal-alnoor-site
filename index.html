@@ -1,80 +1,251 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HILAL ALNOOR TECHNICAL SERVICES</title>
-    <style>
-        body { margin: 0; font-family: Arial, sans-serif; background: #f8f9fa; color: #333; }
-        header { background: #004080; color: white; text-align: center; padding: 60px 20px; }
-        header h1 { margin: 0; font-size: 2.5em; }
-        header p { font-size: 1.2em; margin-top: 10px; }
-        section { padding: 60px 20px; max-width: 1000px; margin: auto; }
-        h2 { color: #004080; }
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .service { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .gallery img { width: 100%; border-radius: 10px; height: 200px; object-fit: cover; }
-        footer { background: #004080; color: white; text-align: center; padding: 20px; }
-        a { color: white; text-decoration: none; }
-        .contact a { color: #004080; text-decoration: underline; }
-        form input, form textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
-        form button { background: #004080; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
-        form button:hover { background: #002a5c; }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>HILAL ALNOOR TECHNICAL SERVICES</title>
+<meta name="description" content="Electrical, Plumbing, HVAC, Ceiling, Painting, Tiles & Stone installations — Dubai" />
+<style>
+  :root{
+    --navy: #0b2340;
+    --deep: #071726;
+    --muted: #98a3b3;
+    --accent1: #0066d6;    /* blue */
+    --accent2: #ff7b00;    /* orange */
+    --card: #0f2b3f;
+    --glass: rgba(255,255,255,0.04);
+    --radius: 14px;
+  }
+  /* Base */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,var(--deep) 0%, var(--navy) 100%);
+    color: #e6f0fb;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+  }
+  a{color:inherit}
+  .container{max-width:1100px;margin:0 auto;padding:28px}
+
+  /* Header */
+  header{
+    padding:56px 20px;
+    text-align:center;
+    position:relative;
+  }
+  .logo-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
+  header img{width:260px;max-width:78%;border-radius:16px;box-shadow:0 10px 30px rgba(3,9,18,0.45)}
+  header h1{margin:0;font-size:2.6rem;letter-spacing:0.6px}
+  header p{margin:8px 0 0;color:var(--muted);font-size:1.05rem}
+
+  /* CTA */
+  .cta-row{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;
+    font-weight:700;text-decoration:none;border:0;cursor:pointer;
+    background:linear-gradient(90deg,var(--accent1),var(--accent2));
+    color:white;box-shadow:0 8px 20px rgba(3,9,18,0.5), inset 0 -2px 10px rgba(255,255,255,0.03)
+  }
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);color:var(--muted);font-weight:600}
+
+  /* Sections */
+  section{padding:44px 0}
+  h2{color: #fff;margin:0 0 12px;font-size:1.4rem}
+  .lead{color:var(--muted);max-width:820px;margin:8px auto 0;font-size:1rem;line-height:1.5}
+
+  /* Services */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.04);
+    box-shadow:0 8px 24px rgba(3,9,18,0.45);transition:transform .36s cubic-bezier(.2,.9,.2,1),box-shadow .36s;
+  }
+  .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(3,9,18,0.6)}
+  .card h3{margin:6px 0 8px;color:#fff}
+  .card p{margin:0;color:var(--muted);font-size:0.95rem}
+
+  /* Gallery */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+  .gallery img{width:100%;height:150px;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 6px 20px rgba(3,9,18,0.5)}
+  .gallery .big{grid-column:span 2;height:320px}
+
+  /* Contact card */
+  .contact-wrap{display:grid;grid-template-columns:1fr 380px;gap:22px;align-items:start}
+  .contact-info{padding:20px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.03)}
+  .contact-info h3{margin:0 0 8px}
+  .contact-info p{margin:6px 0;color:var(--muted)}
+  .contact-card{
+    background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);
+    box-shadow:0 10px 30px rgba(3,9,18,0.5)
+  }
+  .field{display:flex;flex-direction:column;gap:8px}
+  input,textarea{
+    background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:10px;color:#eaf4ff;
+    outline:none;font-size:0.95rem
+  }
+  input::placeholder,textarea::placeholder{color:rgba(230,240,251,0.45)}
+  .send{margin-top:8px;background:linear-gradient(90deg,var(--accent2),var(--accent1));border:0;padding:12px 16px;border-radius:10px;color:#031523;font-weight:800;cursor:pointer}
+
+  /* Footer */
+  footer{padding:26px 0 80px;color:var(--muted);text-align:center}
+  .footer-top{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap;max-width:1100px;margin:0 auto}
+  .socials{display:flex;gap:12px}
+  .chip{background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.03)}
+
+  /* Animations (CSS only) */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.9,.2,1)}
+  .reveal.visible{opacity:1;transform:none}
+
+  /* Responsive */
+  @media (max-width:1024px){.services{grid-template-columns:repeat(2,1fr)} .gallery{grid-template-columns:repeat(2,1fr)} .contact-wrap{grid-template-columns:1fr}}
+  @media (max-width:520px){
+    header img{width:200px}
+    header h1{font-size:1.6rem}
+    .services{grid-template-columns:1fr}
+    .gallery .big{grid-column:span 1;height:200px}
+    .gallery img{height:160px}
+    .container{padding:18px}
+  }
+</style>
 </head>
 <body>
+  <div class="container">
 
-<header>
-    <img src="logo.png" alt="Hilal Alnoor Logo" style="width:150px; margin-bottom:20px;">
-    <h1>HILAL ALNOOR TECHNICAL SERVICES</h1>
-    <p>Reliable Technical Solutions for Every Home and Business</p>
-</header>
+    <!-- HEADER -->
+    <header>
+      <div class="logo-wrap reveal" id="r-0">
+        <!-- direct raw GitHub link (works reliably). If you rename or move logo file, update this URL. -->
+        <img src="https://raw.githubusercontent.com/HANTSUAE/hilal-alnoor-site/main/logo.png" alt="Hilal Alnoor Logo" />
+        <h1>HILAL ALNOOR TECHNICAL SERVICES</h1>
+        <p class="lead">Reliable, fast, and skilled technical solutions across Dubai — electrical, plumbing, HVAC, ceilings, painting, tiles & stone works.</p>
+        <div class="cta-row" style="margin-top:18px">
+          <a class="btn" href="tel:+971561571507">Call +971 56 157 1507</a>
+          <a class="btn ghost" href="https://wa.me/971561571507" target="_blank" rel="noopener">Message on WhatsApp</a>
+        </div>
+      </div>
+    </header>
 
-<section id="about">
-    <h2>About Us</h2>
-    <p>Based in Dubai, United Arab Emirates, HILAL ALNOOR TECHNICAL SERVICES provides high-quality and reliable technical services for residential and commercial clients. Our experienced team specializes in Electrical, Plumbing, HVAC, Ceiling, Painting, Wall & Floor Tiling, and Stone Installation works. We pride ourselves on professional execution and customer satisfaction.</p>
-</section>
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="reveal" id="r-1">
+        <h2>Our Services</h2>
+        <p class="lead">We provide certified technicians and guaranteed workmanship across residential and commercial projects in Dubai.</p>
+      </div>
 
-<section id="services">
-    <h2>Our Services</h2>
-    <div class="services">
-        <div class="service"><h3>Electrical Works</h3><p>Installation, repair, and maintenance for homes and offices.</p></div>
-        <div class="service"><h3>Plumbing Works</h3><p>Leak repair, pipe installation, and bathroom fittings with precision.</p></div>
-        <div class="service"><h3>HVAC</h3><p>Air conditioning installation, ducting, and cooling solutions.</p></div>
-        <div class="service"><h3>Ceiling Works</h3><p>False ceilings and decorative designs for interiors.</p></div>
-        <div class="service"><h3>Painting Works</h3><p>Interior and exterior painting with durable, clean finishes.</p></div>
-        <div class="service"><h3>Wall & Floor Tiling</h3><p>Professional installation of ceramic, marble, and stone tiles.</p></div>
-        <div class="service"><h3>Stone Installation</h3><p>High-quality marble and granite works for luxury spaces.</p></div>
-    </div>
-</section>
+      <div class="services" style="margin-top:14px">
+        <div class="card reveal" id="r-2">
+          <h3>Electrical</h3>
+          <p>Wiring, lighting, switchboards, fault-finding and full electrical installations.</p>
+        </div>
+        <div class="card reveal" id="r-3">
+          <h3>Plumbing</h3>
+          <p>Pipe works, leak repairs, bathroom fittings and plumbing maintenance.</p>
+        </div>
+        <div class="card reveal" id="r-4">
+          <h3>HVAC</h3>
+          <p>AC installation, servicing, ducting and cooling system maintenance.</p>
+        </div>
+        <div class="card reveal" id="r-5">
+          <h3>Ceiling Works</h3>
+          <p>Gypsum, false ceilings, grid ceilings and decorative ceiling systems.</p>
+        </div>
+        <div class="card reveal" id="r-6">
+          <h3>Painting</h3>
+          <p>Interior & exterior painting, surface prep and color consultation.</p>
+        </div>
+        <div class="card reveal" id="r-7">
+          <h3>Tiles & Stone</h3>
+          <p>Wall & floor tile installations, stone cladding, and finishing works.</p>
+        </div>
+      </div>
+    </section>
 
-<section id="gallery">
-    <h2>Our Work</h2>
-    <div class="gallery">
-        <img src="https://source.unsplash.com/800x600/?construction" alt="Construction Work">
-        <img src="https://source.unsplash.com/800x600/?plumbing" alt="Plumbing Work">
-        <img src="https://source.unsplash.com/800x600/?painting" alt="Painting Work">
-        <img src="https://source.unsplash.com/800x600/?electrical" alt="Electrical Work">
-    </div>
-</section>
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="reveal" id="r-8"><h2>Project Gallery</h2></div>
+      <div class="gallery" style="margin-top:12px">
+        <img class="big reveal" id="r-9" src="https://source.unsplash.com/1200x900/?construction,work" alt="Project 1">
+        <img class="reveal" id="r-10" src="https://source.unsplash.com/800x600/?plumbing,tools" alt="Project 2">
+        <img class="reveal" id="r-11" src="https://source.unsplash.com/800x600/?hvac,ac" alt="Project 3">
+        <img class="reveal" id="r-12" src="https://source.unsplash.com/800x600/?tiles,installation" alt="Project 4">
+      </div>
+      <p class="lead" style="margin-top:12px;color:var(--muted)">Tip: Replace these sample images with your own high-resolution photos. I can help upload them to your repo and update the gallery paths.</p>
+    </section>
 
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p><strong>Phone:</strong> <a href="tel:+971561571507">+971 56 157 1507</a></p>
-    <p><strong>Email:</strong> <a href="mailto:info.hantsuae@gmail.com">info.hantsuae@gmail.com</a></p>
-    <p><strong>Location:</strong> Dubai, United Arab Emirates</p>
-    <form action="mailto:info.hantsuae@gmail.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="4" placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-</section>
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="reveal" id="r-13"><h2>Contact & Request a Quote</h2></div>
+      <div class="contact-wrap" style="margin-top:12px">
+        <div class="contact-info reveal" id="r-14">
+          <h3>Get in touch</h3>
+          <p><strong>Phone:</strong> <a href="tel:+971561571507">+971 56 157 1507</a></p>
+          <p><strong>Email:</strong> <a href="mailto:info.hantsuae@gmail.com">info.hantsuae@gmail.com</a></p>
+          <p><strong>Location:</strong> Dubai, United Arab Emirates</p>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <span class="chip">Electrical</span>
+            <span class="chip">Plumbing</span>
+            <span class="chip">HVAC</span>
+            <span class="chip">Ceilings</span>
+          </div>
+        </div>
 
-<footer>
-    <p>© 2025 HILAL ALNOOR TECHNICAL SERVICES | All Rights Reserved</p>
-</footer>
+        <div class="contact-card reveal" id="r-15">
+          <form id="qform" action="mailto:info.hantsuae@gmail.com" method="post" enctype="text/plain" onsubmit="return quickSend(event)">
+            <div class="field"><input name="name" placeholder="Your name" required></div>
+            <div class="field"><input name="phone" placeholder="Phone or WhatsApp" required></div>
+            <div class="field"><textarea name="message" rows="5" placeholder="Brief job details / location"></textarea></div>
+            <button class="send" type="submit">Send Request</button>
+            <div style="font-size:13px;color:var(--muted);margin-top:8px">Or call/WhatsApp <strong>+971 56 157 1507</strong></div>
+          </form>
+        </div>
+      </div>
+    </section>
 
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-top">
+        <div style="text-align:left">
+          <div style="font-weight:700">HILAL ALNOOR TECHNICAL SERVICES</div>
+          <div style="color:var(--muted);margin-top:6px">Dubai • Licensed & Insured • Reliable workmanship</div>
+        </div>
+        <div style="text-align:right">
+          <div style="margin-bottom:8px">© <strong>HILAL ALNOOR</strong> — 2025</div>
+          <div class="socials">
+            <a class="chip" href="https://wa.me/971561571507" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="chip" href="mailto:info.hantsuae@gmail.com">Email</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+<script>
+  // Simple reveal-on-scroll (no libraries)
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  },{threshold:0.12});
+  reveals.forEach(r=>io.observe(r));
+
+  // Mailto form handler: opens mail client with prefilled body
+  function quickSend(e){
+    e.preventDefault();
+    const f = e.target;
+    const name = encodeURIComponent(f.name.value||'');
+    const phone = encodeURIComponent(f.phone.value||'');
+    const message = encodeURIComponent(f.message.value||'');
+    const body = `Name: ${name}%0D%0APhone: ${phone}%0D%0A%0D%0A${message}`;
+    window.location.href = `mailto:info.hantsuae@gmail.com?subject=Request from Website&body=${body}`;
+    return false;
+  }
+</script>
 </body>
 </html>
